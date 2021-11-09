@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/jquery.contextMenu.min.css">
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+
+<body class="body">
+    <noscript>Su navegador no soporta JavaScript.</noscript>
+    <div class="container-fluid">
+        <div id="game" class="mt-4">
+            <div data-page="loading">
+                <h2>Cargando...</h2>
+            </div>
+
+            <div data-page="start">
+                <div class="c_lo">
+                    <br>
+                    <div class="alert alert-danger" id="start-alert"></div>
+                    <h3>¡Únete al juego de Uno!</h3>
+                    <p>Para continuar, debe ingresar su apodo y ingresa una habitación.</p>
+                    <div class="form-group">
+                        <label>Ingresa tu alias</label>
+                        <input type="text" class="form-control" id="start-nick">
+                    </div>
+                    <div class="form-group">
+                        <label>Ingrese el número de habitación</label>
+                        <input type="number" class="form-control" id="start-room-id">
+                    </div>
+                    <button role="button" class="btn btn-primary" id="start-connect" disabled>Ingresar</button>
+                    <br>
+                    <br>
+                </div>
+            </div>
+        </div>
+
+        <div data-page="no-connection">
+            <div class="alert alert-danger">
+                Hubo un error al conectarse al servidor del juego. <a href="javascript:window.location.reload()">Darle una oportunidad
+                    de nuevo</a>
+            </div>
+        </div>
+        <div data-page="game">
+            <div class="row">
+                <div class="col-3 text-left">
+                    <p>Tus cartas:</p>
+                </div>
+                <div class="col-6 text-center">
+                    <p>Estás jugando en el número de habitación <span id="game-room-id"></span></p>
+                </div>
+                <div class="col-3 text-right">
+                    <p>Lista de jugadores:</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-3">
+                    <div id="game-cards">
+                        <div class="game-card" data-card-color="r">2</div>
+                    </div>
+                    <button role="button" id="game-draw-card" class="btn btn-primary">Robo!!!</button>
+                    <button role="button" id="game-skip-turn" class="btn btn-primary">Paso</button>
+                </div>
+                <div class="col-6">
+                    <div id="game-window" class="card-level-top">
+                        <div class="game-state-window" data-game-state="WAITING">
+                            <p>Esperando jugadores y comenzando la ronda por el Oponente.</p>
+                        </div>
+                        <div class="game-state-window" data-game-state="ENDED">
+                            <h3>¡El juego ha terminado!</h3>
+                            <p>Ganó <span id="game-winner"></span></p>
+                        </div>
+                        <div class="game-state-window" data-game-state="PLAYING" data-game-window-color="s">
+                            <p>Tarjeta actual:</p>
+                            <div id="game-current-card">?</div>
+                            <p>Jugada: <span id="game-current-player">?</span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <ul id="game-players"></ul>
+                    <div id="game-op-buttons">
+                        <button role="button" id="game-op-button-restart" class="btn btn-primary"
+                            data-op-button="start">Start</button>
+                        <button role="button" id="game-op-button-restart" class="btn btn-primary"
+                            data-op-button="stop">Stop</button>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div id="game-chat">
+                        <ul></ul>
+                    </div>
+                    <input type="text" maxlength="100" class="form-control mt-2"
+                        placeholder="Por favor ingrese su mensaje" id="game-chat-input">
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="assets/jquery.contextMenu.min.js"></script>
+    <script src="assets/index.js"></script>
+</body>
+
+</html>
